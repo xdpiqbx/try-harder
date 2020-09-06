@@ -1,0 +1,80 @@
+
+/* ==================================================== Менять значения только тут */
+$_base-size: 200px;
+$_list-item-margin: 7px;
+/* ================================================== */
+
+$_margin-top: calc(#{$_base-size} / 3.5);
+$_first-last-child-margin-top: calc(#{$_base-size} - #{$_margin-top});
+$_height: calc(#{$_base-size} * 2 + #{$_margin-top} + (#{$_list-item-margin} * 3));
+
+$_glb_transition-duration-time: 250ms;
+$_glb_cubic-hover: cubic-bezier(0.4, 0, 0.2, 1);
+
+html { 
+  box-sizing: border-box;
+  overflow-x:  hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: aqua;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  height: $_height;  
+}
+
+.list-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: $_list-item-margin;
+
+  position: relative;
+
+  width: $_base-size;
+  height: $_base-size;
+  
+}
+
+.list-item:first-child,
+.list-item:last-child{
+  margin-top: $_first-last-child-margin-top;
+}
+
+.list-item:nth-child(4n-2):not(:last-child){
+  margin-top: $_margin-top;
+}
+
+.list-item__link{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: chartreuse;
+
+  transition-duration: $_glb_transition-duration-time; 
+  transition-timing-function: $_glb_cubic-hover;
+
+  &:hover{
+    position: absolute;
+    z-index: 1;
+    font-size: 2em;
+    width: calc(#{$_base-size} * 1.5);
+    height: calc(#{$_base-size} * 1.5);
+    background-color: burlywood;
+  }
+}
